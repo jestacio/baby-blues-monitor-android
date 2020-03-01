@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.sugarpie.babyblues.R
+import com.sugarpie.babyblues.data.Settings
+import java.util.*
 
 class HomeFragment : Fragment() {
 
@@ -23,8 +25,13 @@ class HomeFragment : Fragment() {
             ViewModelProviders.of(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
         val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(this, Observer {
-            textView.text = it
+        homeViewModel.settings.observe(this, Observer {
+            val settingsMap = it.map
+            val reminderTimestamp = settingsMap.get(Settings.KEY_REMINDERTIMESTAMP) as GregorianCalendar
+            textView.text = if (it.reminderTimestampHasBeenSet())
+                "The next time we'll check on your mental health will be ${reminderTimestamp.get(Calendar.YEAR)} ${reminderTimestamp.get(Calendar.MONTH)} ${reminderTimestamp.get(Calendar.DAY_OF_MONTH)}"
+            else
+                "Go to Settings to set up your reminder."
         })
         return root
     }
