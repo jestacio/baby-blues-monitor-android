@@ -7,8 +7,8 @@ import android.widget.TextView
 import com.sugarpie.babyblues.Log
 import com.sugarpie.babyblues.R
 import com.sugarpie.babyblues.data.Settings
+import com.sugarpie.babyblues.ui.assess.EPDSAssessmentActivity
 import java.util.*
-
 
 class HomeFragmentController {
 
@@ -32,7 +32,7 @@ class HomeFragmentController {
                 activity ?: return@OnClickListener
 
                 val intent = Intent()
-                intent.set
+                intent.setClass(activity, EPDSAssessmentActivity::class.java)
                 activity.startActivity(intent)
             }
             else -> null
