@@ -1,4 +1,4 @@
-<!-- fragment_screen_slide_page.xml -->
+<!-- fragment_edps_question_pagee.xml -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/content"
     android:layout_width="match_parent"

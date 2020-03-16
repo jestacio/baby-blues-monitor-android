@@ -1,7 +1,29 @@
 <resources>
+    <!-- main activity -->
     <string name="app_name">Baby Blues Monitor</string>
-    <string name="edps_assessment_name">Edinburgh Postnatal Depression Scale</string>
     <string name="title_home">Home</string>
     <string name="title_settings">Settings</string>
     <string name="title_history">History</string>
+
+    <!-- EPDS Assessment -->
+    <string name="epds_assessment_name">Edinburgh Postnatal Depression Scale</string>
+    <string name="epds_instructions">As you are pregnant or have recently had a baby, let\'s check
+        on how you are feeling. Please check the answer that comes closest to how you have felt IN
+        THE PAST 7 DAYS, not just how you feel today.\n\n
+
+        You will need to complete all questions for this assessment.\n\n
+
+        It is very important that you not discuss your answers with others, not even your partner.
+    </string>
+    <string name="epds_inthepastsevendays">In the past 7 days:</string>
+    <string name="epds_example_inthepastsevendays">Here is an example, already completed.\n\nIn the
+        past 7 days:</string>
+    <string name="epds_example_question">I have felt happy</string>
+    <string name="epds_example_response0">Yes, all the time</string>
+    <string name="epds_example_response1">Yes, most of the time</string>
+    <string name="epds_example_response2">No, not very often</string>
+    <string name="epds_example_response3">No, not at all</string>
+    <string name="epds_example_explanation">This would mean: \"I have felt happy most of the time\"
+        during the past week.\n\nPlease complete the other questions in the same way.
+    </string>
 </resources>

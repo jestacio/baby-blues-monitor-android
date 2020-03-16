@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.sugarpie.babyblues.R
 
-class ScreenSlidePageFragment : Fragment() {
+class EPDSInstructionsPageFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View = inflater.inflate(R.layout.fragment_screen_slide_page, container, false)
+    ): View = inflater.inflate(R.layout.fragment_edps_instructions_page, container, false)
 }
