@@ -1,4 +1,4 @@
-package com.sugarpie.babyblues.ui.assess
+package com.sugarpie.babyblues.ui.epds
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,11 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import com.sugarpie.babyblues.Log
 import com.sugarpie.babyblues.R
-import com.sugarpie.babyblues.logic.assess.EPDSPagerAdapter
+import com.sugarpie.babyblues.logic.epds.EPDSPagerAdapter
+import com.sugarpie.babyblues.logic.epds.EPDSQuestionPageFragmentController
 
-class EPDSQuestionPageFragment(private val position: Int) : Fragment() {
+class EPDSQuestionPageFragment(private val position: Int, private val viewModel: EPDSAssessmentViewModel) : Fragment() {
+
+    private val controller = EPDSQuestionPageFragmentController()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -19,7 +23,13 @@ class EPDSQuestionPageFragment(private val position: Int) : Fragment() {
     ): View {
         val view = inflater.inflate(R.layout.fragment_edps_question_page, container, false)
         val index = position - EPDSPagerAdapter.OFFSET_QUESTIONS
-        Log.d(TAG, "Got index $index from position $position using offset $EPDSPagerAdapter.OFFSET_QUESTIONS")
+        Log.d(TAG, "Got index $index from position $position using offset ${EPDSPagerAdapter.OFFSET_QUESTIONS}")
+
+        viewModel.getQuestionData(index).observe(this, Observer {
+            if (it != null) {
+                controller.updateViews(it, view)
+            }
+        })
 
         when(index) {
             0 -> view.findViewById<TextView>(R.id.text_history)?.setText(R.string.app_name)

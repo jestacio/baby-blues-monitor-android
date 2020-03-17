@@ -1,13 +1,16 @@
-package com.sugarpie.babyblues.ui.assess
+package com.sugarpie.babyblues.ui.epds
 
 import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager2.widget.ViewPager2
 import com.sugarpie.babyblues.Log
 import com.sugarpie.babyblues.R
-import com.sugarpie.babyblues.logic.assess.EPDSPagerAdapter
+import com.sugarpie.babyblues.logic.epds.EPDSPagerAdapter
 
 class EPDSAssessmentActivity : FragmentActivity() {
+
+    private lateinit var viewModel: EPDSAssessmentViewModel
 
     /**
      * The pager widget, which handles animation and allows swiping horizontally to access previous
@@ -22,11 +25,14 @@ class EPDSAssessmentActivity : FragmentActivity() {
 
         setContentView(R.layout.activity_edpsassessment)
 
+        viewModel = ViewModelProviders.of(this).get(EPDSAssessmentViewModel::class.java)
+        viewModel.reset(applicationContext)
+
         // Instantiate a ViewPager2 and a PagerAdapter.
         viewPager = findViewById(R.id.pager)
 
         // The pager adapter, which provides the pages to the view pager widget.
-        val pagerAdapter = EPDSPagerAdapter(this)
+        val pagerAdapter = EPDSPagerAdapter(this, viewModel)
         viewPager.adapter = pagerAdapter
     }
 

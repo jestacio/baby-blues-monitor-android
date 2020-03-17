@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="teststringarray">
+        <item>the</item>
+        <item>quick</item>
+        <item>brown</item>
+        <item>fox</item>
+    </string-array>
+
+    <!-- Edinburgh Postnatal Depression Scale Questions and Responses -->
+    <string-array name="epds_questions_and_responses_array">
+        <item>
+            {
+                \"question\": \"I have been able to laugh and see the funny side of things\",
+                \"response0\": \"As much as I always could\",
+                \"response1\": \"Not quite so much now\",
+                \"response2\": \"Definitely not so much now\",
+                \"response3\": \"Not at all\"
+            }
+        </item>
+        <item>
+            {
+                \"question\": \"I have looked forward with enjoyment to things\",
+                \"response0\": \"As much as I ever did\",
+                \"response1\": \"Rather less than I used to\",
+                \"response2\": \"Definitely less than I used to\",
+                \"response3\": \"Hardly at all\"
+            }
+        </item>
+        <item>
+            {
+                \"question\": \"I have blamed myself unnecessarily when things went wrong\",
+                \"response0\": \"Yes, most of the time\",
+                \"response1\": \"Yes, some of the time\",
+                \"response2\": \"Not very often\",
+                \"response3\": \"No, never\"
+            }
+        </item>
+        <item>
+            {
+                \"question\": \"I have been anxious or worried for no good reason\",
+                \"response0\": \"No, not at all\",
+                \"response1\": \"Hardly ever\",
+                \"response2\": \"Yes, sometimes\",
+                \"response3\": \"Yes, very often\"
+            }
+        </item>
+        <item>
+            {
+                \"question\": \"I have felt scared or panicky for no very good reason\",
+                \"response0\": \"Yes, quite a lot\",
+                \"response1\": \"Yes, sometimes\",
+                \"response2\": \"No, not much\",
+                \"response3\": \"No, not at all\"
+            }
+        </item>
+        <item>
+            {
+                \"question\": \"Things have been getting on top of me\",
+                \"response0\": \"Yes, most of the time I haven\'t been able to cope at all\",
+                \"response1\": \"Yes, sometimes I haven\'t been coping as well as usual\",
+                \"response2\": \"No, most of the time I have coped quite well\",
+                \"response3\": \"No, I have been coping as well as ever\"
+            }
+        </item>
+        <item>
+            {
+                \"question\": \"I have been so unhappy that I have had difficulty sleeping\",
+                \"response0\": \"Yes, most of the time\",
+                \"response1\": \"Yes, sometimes\",
+                \"response2\": \"Not very often\",
+                \"response3\": \"No, not at all\"
+            }
+        </item>
+        <item>
+            {
+                \"question\": \"I have felt sad or miserable\",
+                \"response0\": \"Yes, most of the time\",
+                \"response1\": \"Yes, quite often\",
+                \"response2\": \"Not very often\",
+                \"response3\": \"No, not at all\"
+            }
+        </item>
+        <item>
+            {
+                \"question\": \"I have been so unhappy that I have been crying\",
+                \"response0\": \"Yes, most of the time\",
+                \"response1\": \"Yes, quite often\",
+                \"response2\": \"Only occasionally\",
+                \"response3\": \"No, never\"
+            }
+        </item>
+        <item>
+            {
+                \"question\": \"The thought of harming myself has occurred to me\",
+                \"response0\": \"Yes, quite often\",
+                \"response1\": \"Sometimes\",
+                \"response2\": \"Hardly ever\",
+                \"response3\": \"Never\"
+            }
+        </item>
+    </string-array>
+</resources>

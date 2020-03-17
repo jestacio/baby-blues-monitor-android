@@ -1,18 +1,15 @@
-package com.sugarpie.babyblues.logic.assess
+package com.sugarpie.babyblues.logic.epds
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.sugarpie.babyblues.Log
-import com.sugarpie.babyblues.ui.assess.EPDSExampleResponsePageFragment
-import com.sugarpie.babyblues.ui.assess.EPDSInstructionsPageFragment
-import com.sugarpie.babyblues.ui.assess.EPDSQuestionPageFragment
-import com.sugarpie.babyblues.ui.assess.EPDSSubmitPageFragment
+import com.sugarpie.babyblues.ui.epds.*
 
 /**
  * Pager adapter that represents the questionnaire for the Edinburgh postnatal depression scale
  */
-class EPDSPagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
+class EPDSPagerAdapter(fa: FragmentActivity, private val viewModel: EPDSAssessmentViewModel) : FragmentStateAdapter(fa) {
 
     override fun getItemCount(): Int = NUM_PAGES
 
@@ -26,8 +23,8 @@ class EPDSPagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
         return when (position) {
             0 -> EPDSInstructionsPageFragment()
             1 -> EPDSExampleResponsePageFragment()
-            11 -> EPDSSubmitPageFragment()
-            else -> EPDSQuestionPageFragment(position) // 10 questions
+            12 -> EPDSSubmitPageFragment()
+            else -> EPDSQuestionPageFragment(position, viewModel) // 10 questions
         }
     }
 

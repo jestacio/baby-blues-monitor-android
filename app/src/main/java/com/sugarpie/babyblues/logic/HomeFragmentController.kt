@@ -7,7 +7,7 @@ import android.widget.TextView
 import com.sugarpie.babyblues.Log
 import com.sugarpie.babyblues.R
 import com.sugarpie.babyblues.data.Settings
-import com.sugarpie.babyblues.ui.assess.EPDSAssessmentActivity
+import com.sugarpie.babyblues.ui.epds.EPDSAssessmentActivity
 import java.util.*
 
 class HomeFragmentController {

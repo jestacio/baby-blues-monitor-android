@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.assess.EPDSAssessmentActivity"
+            android:name=".ui.epds.EPDSAssessmentActivity"
             android:label="@string/epds_assessment_name">
         </activity>
     </application>

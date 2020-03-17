@@ -1,4 +1,4 @@
-package com.sugarpie.babyblues.ui.assess
+package com.sugarpie.babyblues.ui.epds
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.fragment.app.Fragment
 import com.sugarpie.babyblues.R
-import com.sugarpie.babyblues.logic.assess.EPDSExampleController
+import com.sugarpie.babyblues.logic.epds.EPDSExampleController
 
 class EPDSExampleResponsePageFragment : Fragment() {
 
