@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.epds.EPDSAssessmentActivity"
+            android:name=".epds.view.EPDSAssessmentActivity"
             android:label="@string/epds_assessment_name"
             android:theme="@style/EPDSTheme">
         </activity>
