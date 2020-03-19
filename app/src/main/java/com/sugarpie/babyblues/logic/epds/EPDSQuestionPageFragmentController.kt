@@ -4,10 +4,34 @@ import android.view.View
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
+import androidx.viewpager2.widget.ViewPager2
+import com.sugarpie.babyblues.Log
 import com.sugarpie.babyblues.R
 import com.sugarpie.babyblues.data.epds.EPDSQuestionData
+import com.sugarpie.babyblues.ui.epds.EPDSAssessmentViewModel
 
 class EPDSQuestionPageFragmentController {
+
+    fun getRGOnCheckedChangeListener(viewModel: EPDSAssessmentViewModel, questionIdx: Int,
+                                     viewPager: ViewPager2): RadioGroup.OnCheckedChangeListener {
+        return RadioGroup.OnCheckedChangeListener { _: RadioGroup, checkedId: Int ->
+            val selectedIdx = when (checkedId) {
+                R.id.epds_response0 -> 0
+                R.id.epds_response1 -> 1
+                R.id.epds_response2 -> 2
+                R.id.epds_response3 -> 3
+                else -> -1
+            }
+
+            Log.d(TAG, "Got $selectedIdx from $checkedId")
+
+            if (selectedIdx >= 0) {
+                viewPager.currentItem = viewPager.currentItem + 1
+            }
+
+            viewModel.updateResponse(questionIdx, selectedIdx)
+        }
+    }
 
     fun updateViews(it: EPDSQuestionData, view: View) {
         val question = view.findViewById<TextView>(R.id.epds_question)
@@ -31,5 +55,9 @@ class EPDSQuestionPageFragmentController {
         resp1.text = it.response1
         resp2.text = it.response2
         resp3.text = it.response3
+    }
+
+    companion object {
+        const val TAG = "EPDSQuestionPageFragmentController"
     }
 }

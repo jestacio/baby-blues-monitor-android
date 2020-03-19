@@ -26,4 +26,13 @@
     <string name="epds_example_explanation">This would mean: \"I have felt happy most of the time\"
         during the past week.\n\nPlease complete the other questions in the same way.
     </string>
+    <string name="epds_submit_instructions_complete">Tap the button below to complete the
+        assessment.
+    </string>
+    <string name="epds_submit_instructions_incomplete">Respond to all questions to complete the
+        assessment.
+    </string>
+
+    <!-- General -->
+    <string name="finish">Finish</string>
 </resources>

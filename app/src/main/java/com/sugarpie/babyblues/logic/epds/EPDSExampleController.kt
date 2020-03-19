@@ -8,7 +8,7 @@ import com.sugarpie.babyblues.R
 
 class EPDSExampleController {
 
-    fun getClickListener(rb: RadioButton, rg: RadioGroup): View.OnClickListener? {
+    fun getClickListener(rb: RadioButton, rg: RadioGroup): View.OnClickListener {
         return View.OnClickListener {
             Log.d(TAG, "clicked ${rb.id}")
 

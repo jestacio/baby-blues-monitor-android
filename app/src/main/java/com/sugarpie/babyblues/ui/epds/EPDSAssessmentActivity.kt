@@ -32,7 +32,7 @@ class EPDSAssessmentActivity : FragmentActivity() {
         viewPager = findViewById(R.id.pager)
 
         // The pager adapter, which provides the pages to the view pager widget.
-        val pagerAdapter = EPDSPagerAdapter(this, viewModel)
+        val pagerAdapter = EPDSPagerAdapter(this, viewModel, viewPager)
         viewPager.adapter = pagerAdapter
     }
 

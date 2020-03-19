@@ -9,4 +9,4 @@ data class EPDSQuestionData(
     val response1: String,
     val response2: String,
     val response3: String,
-    val selectedResponse: Int)
+    var selectedResponse: Int)

@@ -4,15 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.viewpager2.widget.ViewPager2
 import com.sugarpie.babyblues.Log
 import com.sugarpie.babyblues.R
 import com.sugarpie.babyblues.logic.epds.EPDSPagerAdapter
 import com.sugarpie.babyblues.logic.epds.EPDSQuestionPageFragmentController
 
-class EPDSQuestionPageFragment(private val position: Int, private val viewModel: EPDSAssessmentViewModel) : Fragment() {
+class EPDSQuestionPageFragment(private val position: Int,
+                               private val viewModel: EPDSAssessmentViewModel,
+                               private val viewPager: ViewPager2) : Fragment() {
 
     private val controller = EPDSQuestionPageFragmentController()
 
@@ -30,6 +34,10 @@ class EPDSQuestionPageFragment(private val position: Int, private val viewModel:
                 controller.updateViews(it, view)
             }
         })
+
+        val rg = view.findViewById<RadioGroup>(R.id.epds_radiogroup)
+        rg.setOnCheckedChangeListener(controller.getRGOnCheckedChangeListener(viewModel, index,
+            viewPager))
 
         when(index) {
             0 -> view.findViewById<TextView>(R.id.text_history)?.setText(R.string.app_name)
