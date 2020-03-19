@@ -20,7 +20,8 @@
         </activity>
         <activity
             android:name=".ui.epds.EPDSAssessmentActivity"
-            android:label="@string/epds_assessment_name">
+            android:label="@string/epds_assessment_name"
+            android:theme="@style/EPDSTheme">
         </activity>
     </application>
 

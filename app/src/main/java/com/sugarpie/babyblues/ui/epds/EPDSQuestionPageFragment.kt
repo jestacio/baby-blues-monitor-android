@@ -26,6 +26,8 @@ class EPDSQuestionPageFragment(private val position: Int,
         savedInstanceState: Bundle?
     ): View {
         val view = inflater.inflate(R.layout.fragment_edps_question_page, container, false)
+        val viewGroup = view.findViewById<ViewGroup>(R.id.content)
+        viewGroup.layoutTransition?.setAnimateParentHierarchy(false)
         val index = position - EPDSPagerAdapter.OFFSET_QUESTIONS
         Log.d(TAG, "Got index $index from position $position using offset ${EPDSPagerAdapter.OFFSET_QUESTIONS}")
 

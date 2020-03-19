@@ -4,6 +4,7 @@ import android.view.View
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
+import androidx.core.view.size
 import androidx.viewpager2.widget.ViewPager2
 import com.sugarpie.babyblues.Log
 import com.sugarpie.babyblues.R
@@ -26,6 +27,7 @@ class EPDSQuestionPageFragmentController {
             Log.d(TAG, "Got $selectedIdx from $checkedId")
 
             if (selectedIdx >= 0) {
+                Log.d(TAG, "OnCheckedChangeListener() viewPager.currentItem=${viewPager.currentItem}")
                 viewPager.currentItem = viewPager.currentItem + 1
             }
 
@@ -51,10 +53,10 @@ class EPDSQuestionPageFragmentController {
         }
 
         question.text = it.question
-        resp0.text = it.response0
-        resp1.text = it.response1
-        resp2.text = it.response2
-        resp3.text = it.response3
+        resp0.text = it.responses[0].text
+        resp1.text = it.responses[1].text
+        resp2.text = it.responses[2].text
+        resp3.text = it.responses[3].text
     }
 
     companion object {

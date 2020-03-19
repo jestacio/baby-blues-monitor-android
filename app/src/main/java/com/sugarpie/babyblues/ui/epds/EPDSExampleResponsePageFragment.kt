@@ -20,6 +20,8 @@ class EPDSExampleResponsePageFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val view = inflater.inflate(R.layout.fragment_edps_example_response_page, container, false)
+        val viewGroup = view.findViewById<ViewGroup>(R.id.content)
+        viewGroup.layoutTransition?.setAnimateParentHierarchy(false)
 
         val rg = view.findViewById<RadioGroup>(R.id.epds_radiogroup)
         val rb0 = view.findViewById<RadioButton>(R.id.epds_response0)

@@ -35,4 +35,6 @@
 
     <!-- General -->
     <string name="finish">Finish</string>
+    <string name="next">Next</string>
+    <string name="prev">Prev</string>
 </resources>

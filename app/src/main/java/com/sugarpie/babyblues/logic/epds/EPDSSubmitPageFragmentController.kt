@@ -8,13 +8,13 @@ import com.sugarpie.babyblues.R
 import com.sugarpie.babyblues.logic.Utils
 
 class EPDSSubmitPageFragmentController {
-    fun updateViews(completed: Boolean, text_instructions: TextView, button_finish: Button) {
-        if (completed) {
-            text_instructions.setText(R.string.epds_submit_instructions_complete)
-            button_finish.isEnabled = true
-        } else {
+    fun updateViews(score: Int, text_instructions: TextView, button_finish: Button) {
+        if (score < 0) {
             text_instructions.setText(R.string.epds_submit_instructions_incomplete)
             button_finish.isEnabled = false
+        } else {
+            text_instructions.setText(R.string.epds_submit_instructions_complete)
+            button_finish.isEnabled = true
         }
     }
 

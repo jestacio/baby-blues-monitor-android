@@ -21,10 +21,12 @@ class EPDSSubmitPageFragment(private val viewModel: EPDSAssessmentViewModel) : F
         savedInstanceState: Bundle?
     ): View {
         val view = inflater.inflate(R.layout.fragment_edps_submit_page, container, false)
+        val viewGroup = view.findViewById<ViewGroup>(R.id.content)
+        viewGroup.layoutTransition?.setAnimateParentHierarchy(false)
         val textInstructions = view.findViewById<TextView>(R.id.text_instructions)
         val buttonFinish = view.findViewById<Button>(R.id.button_finish)
 
-        viewModel.getCompletedState().observe(this, Observer {
+        viewModel.getScore().observe(this, Observer {
             if (it != null) {
                 controller.updateViews(it, textInstructions, buttonFinish)
             }

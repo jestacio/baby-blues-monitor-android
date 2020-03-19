@@ -1,14 +1,17 @@
 package com.sugarpie.babyblues.ui.epds
 
 import android.os.Bundle
-import androidx.fragment.app.FragmentActivity
+import android.view.Menu
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager2.widget.ViewPager2
 import com.sugarpie.babyblues.Log
 import com.sugarpie.babyblues.R
 import com.sugarpie.babyblues.logic.epds.EPDSPagerAdapter
+import kotlinx.android.synthetic.main.activity_edpsassessment.*
 
-class EPDSAssessmentActivity : FragmentActivity() {
+class EPDSAssessmentActivity : AppCompatActivity() {
 
     private lateinit var viewModel: EPDSAssessmentViewModel
 
@@ -25,6 +28,9 @@ class EPDSAssessmentActivity : FragmentActivity() {
 
         setContentView(R.layout.activity_edpsassessment)
 
+        setSupportActionBar(toolbar as Toolbar?)
+        container.layoutTransition?.setAnimateParentHierarchy(false)
+
         viewModel = ViewModelProviders.of(this).get(EPDSAssessmentViewModel::class.java)
         viewModel.reset(applicationContext)
 
@@ -34,6 +40,11 @@ class EPDSAssessmentActivity : FragmentActivity() {
         // The pager adapter, which provides the pages to the view pager widget.
         val pagerAdapter = EPDSPagerAdapter(this, viewModel, viewPager)
         viewPager.adapter = pagerAdapter
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.epds_menu, menu)
+        return super.onCreateOptionsMenu(menu)
     }
 
     override fun onBackPressed() {

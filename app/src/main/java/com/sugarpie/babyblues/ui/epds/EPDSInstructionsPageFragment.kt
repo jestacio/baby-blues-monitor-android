@@ -13,5 +13,11 @@ class EPDSInstructionsPageFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View = inflater.inflate(R.layout.fragment_edps_instructions_page, container, false)
+    ): View {
+        val view = inflater.inflate(R.layout.fragment_edps_instructions_page, container, false)
+        val viewGroup = view.findViewById<ViewGroup>(R.id.content)
+        viewGroup.layoutTransition?.setAnimateParentHierarchy(false)
+
+        return view
+    }
 }
