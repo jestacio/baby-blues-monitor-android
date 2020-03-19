@@ -26,10 +26,10 @@ class EPDSQuestionPageFragmentController {
 
             Log.d(TAG, "Got $selectedIdx from $checkedId")
 
-            if (selectedIdx >= 0) {
-                Log.d(TAG, "OnCheckedChangeListener() viewPager.currentItem=${viewPager.currentItem}")
-                viewPager.currentItem = viewPager.currentItem + 1
-            }
+//            if (selectedIdx >= 0) {
+//                Log.d(TAG, "OnCheckedChangeListener() viewPager.currentItem=${viewPager.currentItem}")
+//                viewPager.currentItem = viewPager.currentItem + 1
+//            }
 
             viewModel.updateResponse(questionIdx, selectedIdx)
         }

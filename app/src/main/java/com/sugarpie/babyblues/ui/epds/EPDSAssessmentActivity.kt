@@ -2,6 +2,7 @@ package com.sugarpie.babyblues.ui.epds
 
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProviders
@@ -28,7 +29,9 @@ class EPDSAssessmentActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_edpsassessment)
 
-        setSupportActionBar(toolbar as Toolbar?)
+        toolbar.title = ""
+
+        setSupportActionBar(toolbar)
         container.layoutTransition?.setAnimateParentHierarchy(false)
 
         viewModel = ViewModelProviders.of(this).get(EPDSAssessmentViewModel::class.java)
@@ -56,6 +59,22 @@ class EPDSAssessmentActivity : AppCompatActivity() {
             // Otherwise, select the previous step.
             viewPager.currentItem = viewPager.currentItem - 1
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle presses on the action bar menu items in the activity class
+        // Move to separate controller class if this gets more complicated
+        when (item.itemId) {
+            R.id.action_next -> {
+                viewPager.currentItem = viewPager.currentItem + 1
+                return true
+            }
+            R.id.action_prev -> {
+                viewPager.currentItem = viewPager.currentItem - 1
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     companion object {
