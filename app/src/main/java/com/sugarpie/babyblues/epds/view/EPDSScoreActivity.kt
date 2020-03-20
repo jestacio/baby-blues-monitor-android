@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.sugarpie.babyblues.Log
 import com.sugarpie.babyblues.R
+import com.sugarpie.babyblues.SharedExtras
 import com.sugarpie.babyblues.epds.logic.EPDSScoreActivityController
 import kotlinx.android.synthetic.main.activity_edpsscore.*
 
@@ -17,7 +18,9 @@ class EPDSScoreActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_edpsscore)
 
-        button_share.setOnClickListener(controller.getShareClickListener())
+        val epdsText = intent.getStringExtra(SharedExtras.EXTRA_COMPLETED_EPDS_TEXT)
+
+        button_share.setOnClickListener(controller.getShareClickListener(epdsText))
     }
 
     companion object {

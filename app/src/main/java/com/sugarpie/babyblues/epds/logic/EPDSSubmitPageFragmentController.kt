@@ -37,6 +37,7 @@ class EPDSSubmitPageFragmentController {
                 val intent = Intent()
                 intent.setClass(act.applicationContext, EPDSScoreActivity::class.java)
                 intent.putExtra(SharedExtras.EXTRA_SCORE, viewModel.getScore().value)
+                intent.putExtra(SharedExtras.EXTRA_COMPLETED_EPDS_TEXT, viewModel.toText())
                 act.startActivity(intent)
             }
 

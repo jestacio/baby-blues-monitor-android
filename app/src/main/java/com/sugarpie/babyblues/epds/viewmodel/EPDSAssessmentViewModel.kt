@@ -8,6 +8,7 @@ import com.sugarpie.babyblues.Log
 import com.sugarpie.babyblues.epds.data.EPDSQuestionData
 import com.sugarpie.babyblues.epds.logic.EPDSResourceLoader
 import com.sugarpie.babyblues.epds.data.EPDSResponseData
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.text.StringBuilder
 
@@ -103,10 +104,11 @@ class EPDSAssessmentViewModel : ViewModel() {
 
     fun toText(): String {
         val stringBuilder = StringBuilder()
+        val simpleDateFormat = SimpleDateFormat("EEE, MM/dd/yyy", Locale.ENGLISH)
 
         stringBuilder.append("Edinburgh Postnatal Depression Scale\n")
         stringBuilder.append("Date: ")
-        stringBuilder.append(GregorianCalendar().toString())
+        stringBuilder.append(simpleDateFormat.format(GregorianCalendar().time))
         stringBuilder.append("\n\n")
 
         stringBuilder.append("score: ")

@@ -15,7 +15,7 @@ class EPDSScoreActivityController {
         }
     }
 
-    fun getShareClickListener(): View.OnClickListener {
+    fun getShareClickListener(epdsText: String): View.OnClickListener {
         return View.OnClickListener {
             it ?: return@OnClickListener
 
@@ -27,7 +27,7 @@ class EPDSScoreActivityController {
 
             val sendIntent: Intent = Intent().apply {
                 action = Intent.ACTION_SEND
-                putExtra(Intent.EXTRA_TEXT, "This is my text to send.")
+                putExtra(Intent.EXTRA_TEXT, epdsText)
                 type = "text/plain"
             }
 
