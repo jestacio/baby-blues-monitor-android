@@ -34,7 +34,7 @@ class EPDSSubmitPageFragment(private val viewModel: EPDSAssessmentViewModel) : F
             }
         })
 
-        buttonFinish.setOnClickListener(controller.getFinishOnClickListener())
+        buttonFinish.setOnClickListener(controller.getFinishOnClickListener(viewModel))
 
         return view
     }

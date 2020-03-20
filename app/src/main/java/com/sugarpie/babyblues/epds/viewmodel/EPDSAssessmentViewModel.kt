@@ -8,6 +8,8 @@ import com.sugarpie.babyblues.Log
 import com.sugarpie.babyblues.epds.data.EPDSQuestionData
 import com.sugarpie.babyblues.epds.logic.EPDSResourceLoader
 import com.sugarpie.babyblues.epds.data.EPDSResponseData
+import java.util.*
+import kotlin.text.StringBuilder
 
 class EPDSAssessmentViewModel : ViewModel() {
 
@@ -97,6 +99,30 @@ class EPDSAssessmentViewModel : ViewModel() {
 
     fun getScore(): LiveData<Int> {
         return score
+    }
+
+    fun toText(): String {
+        val stringBuilder = StringBuilder()
+
+        stringBuilder.append("Edinburgh Postnatal Depression Scale\n")
+        stringBuilder.append("Date: ")
+        stringBuilder.append(GregorianCalendar().toString())
+        stringBuilder.append("\n\n")
+
+        stringBuilder.append("score: ")
+        stringBuilder.append(score.value)
+        stringBuilder.append("\n\n")
+
+        list?.forEach {
+            val liveData = it
+            val questionData = liveData.value
+            val text = questionData?.toText()
+
+            stringBuilder.append(text)
+            stringBuilder.append("\n\n")
+        }
+
+        return stringBuilder.toString()
     }
 
     companion object {

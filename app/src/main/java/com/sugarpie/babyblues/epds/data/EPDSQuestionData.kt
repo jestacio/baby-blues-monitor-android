@@ -27,4 +27,16 @@ data class EPDSQuestionData(
         result = 31 * result + selectedResponse
         return result
     }
+
+    fun toText(): String {
+        val stringBuilder = StringBuilder()
+
+        if (selectedResponse >= 0) {
+            stringBuilder.append(question)
+            stringBuilder.append(": ")
+            stringBuilder.append(responses[selectedResponse])
+        }
+
+        return stringBuilder.toString()
+    }
 }
