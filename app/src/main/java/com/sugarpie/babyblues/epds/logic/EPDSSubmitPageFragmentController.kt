@@ -31,13 +31,15 @@ class EPDSSubmitPageFragmentController {
 
             val act = Utils.getActivityFromView(it)
 
-            // todo persist responses for history
+            viewModel.saveToFile()
 
             if (act != null) {
-                val intent = Intent()
-                intent.setClass(act.applicationContext, EPDSScoreActivity::class.java)
-                intent.putExtra(SharedExtras.EXTRA_SCORE, viewModel.getScore().value)
-                intent.putExtra(SharedExtras.EXTRA_COMPLETED_EPDS_TEXT, viewModel.toText())
+                val intent = Intent().apply {
+                    setClass(act.applicationContext, EPDSScoreActivity::class.java)
+                    putExtra(SharedExtras.EXTRA_SCORE, viewModel.getScore().value)
+                    putExtra(SharedExtras.EXTRA_COMPLETED_EPDS_TEXT, viewModel.toText())
+                }
+
                 act.startActivity(intent)
             }
 

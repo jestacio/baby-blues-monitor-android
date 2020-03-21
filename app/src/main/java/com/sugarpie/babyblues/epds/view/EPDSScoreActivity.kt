@@ -19,8 +19,12 @@ class EPDSScoreActivity : AppCompatActivity() {
         setContentView(R.layout.activity_edpsscore)
 
         val epdsText = intent.getStringExtra(SharedExtras.EXTRA_COMPLETED_EPDS_TEXT)
+        val score = intent.getIntExtra(SharedExtras.EXTRA_SCORE, -1)
+
+        controller.updateViews(score, button_finish, text_result)
 
         button_share.setOnClickListener(controller.getShareClickListener(epdsText))
+        button_finish.setOnClickListener(controller.getFinishClickListener(score))
     }
 
     companion object {

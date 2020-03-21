@@ -5,17 +5,43 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sugarpie.babyblues.Log
+import com.sugarpie.babyblues.Utils
 import com.sugarpie.babyblues.epds.data.EPDSQuestionData
 import com.sugarpie.babyblues.epds.logic.EPDSResourceLoader
 import com.sugarpie.babyblues.epds.data.EPDSResponseData
+import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.text.StringBuilder
 
 class EPDSAssessmentViewModel : ViewModel() {
 
+    private var timestamp: String = ""
     private var list: List<MutableLiveData<EPDSQuestionData>>? = null
     private var score: MutableLiveData<Int> = MutableLiveData<Int>()
+
+    fun saveToFile(ctx: Context) {
+        val resultsDir = Utils.getEPDSResultsDir(ctx)
+        val newFilename = resultsDir.absolutePath + "/" + timestamp
+
+        Log.d(TAG, "newFilename=$newFilename")
+
+        val newFile = File(newFilename)
+
+        if (!newFile.exists()) {
+            newFile.createNewFile()
+        }
+
+        newFile.writeText(this.serialize())
+    }
+
+    fun serialize(): String {
+        return ""
+    }
+
+    fun setTimestamp(ts: String) {
+        timestamp = ts
+    }
 
     /**
      * Reloads from the string array resource file
@@ -129,5 +155,9 @@ class EPDSAssessmentViewModel : ViewModel() {
 
     companion object {
         const val TAG = "EPDSAssessmentViewModel"
+
+        fun deserialize(file: File): EPDSAssessmentViewModel {
+            return EPDSAssessmentViewModel()
+        }
     }
 }

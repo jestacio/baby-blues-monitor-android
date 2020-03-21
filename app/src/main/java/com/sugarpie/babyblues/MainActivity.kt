@@ -18,6 +18,13 @@ class MainActivity : AppCompatActivity() {
         Log.w(TAG, "onCreate w log")
         Log.e(TAG, "onCreate e log")
 
+        // create directory for completed assessments
+        val ctx = applicationContext
+        val resultsDir = Utils.getEPDSResultsDir(ctx)
+        if (!resultsDir.exists()) {
+            resultsDir.mkdirs()
+        }
+
         setContentView(R.layout.activity_main)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 

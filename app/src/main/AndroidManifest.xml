@@ -28,6 +28,11 @@
             android:label="@string/empty"
             android:theme="@style/EPDSTheme">
         </activity>
+        <activity
+            android:name=".epds.view.EPDSResourcesActivity"
+            android:label="@string/empty"
+            android:theme="@style/EPDSTheme">
+        </activity>
     </application>
 
 </manifest>
