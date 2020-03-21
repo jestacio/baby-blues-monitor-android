@@ -1,13 +1,13 @@
-package com.sugarpie.babyblues.ui.settings
+package com.sugarpie.babyblues.history.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class SettingsViewModel : ViewModel() {
+class HistoryViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is Settings Fragment"
+        value = "This is History Fragment"
     }
     val text: LiveData<String> = _text
 }

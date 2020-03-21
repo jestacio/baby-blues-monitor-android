@@ -1,4 +1,4 @@
-package com.sugarpie.babyblues.ui.history
+package com.sugarpie.babyblues.settings
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.sugarpie.babyblues.R
 
-class HistoryFragment : Fragment() {
+class SettingsFragment : Fragment() {
 
-    private lateinit var historyViewModel: HistoryViewModel
+    private lateinit var settingsViewModel: SettingsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        historyViewModel =
-            ViewModelProviders.of(this).get(HistoryViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_history, container, false)
-        val textView: TextView = root.findViewById(R.id.text_history)
-        historyViewModel.text.observe(this, Observer {
+        settingsViewModel =
+            ViewModelProviders.of(this).get(SettingsViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_settings, container, false)
+        val textView: TextView = root.findViewById(R.id.text_settings)
+        settingsViewModel.text.observe(this, Observer {
             textView.text = it
         })
         return root

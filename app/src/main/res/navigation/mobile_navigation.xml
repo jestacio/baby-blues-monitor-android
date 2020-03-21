@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.sugarpie.babyblues.ui.home.HomeFragment"
+        android:name="com.sugarpie.babyblues.home.view.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_settings"
-        android:name="com.sugarpie.babyblues.ui.settings.SettingsFragment"
+        android:name="com.sugarpie.babyblues.settings.SettingsFragment"
         android:label="@string/title_settings"
         tools:layout="@layout/fragment_settings" />
 
     <fragment
         android:id="@+id/navigation_history"
-        android:name="com.sugarpie.babyblues.ui.history.HistoryFragment"
+        android:name="com.sugarpie.babyblues.history.view.HistoryFragment"
         android:label="@string/title_history"
         tools:layout="@layout/fragment_history" />
 </navigation>
