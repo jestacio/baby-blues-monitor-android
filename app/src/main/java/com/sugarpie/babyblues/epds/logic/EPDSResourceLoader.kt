@@ -21,22 +21,25 @@ class EPDSResourceLoader {
         rawArray.iterator().forEach {
             Log.d(TAG, "it is $it")
             question = JSONObject(it)
-            responses = question.getJSONArray(KEY_RESPONSES)
+            responses = question.getJSONArray(EPDSQuestionData.KEY_RESPONSES)
 
             responseList = mutableListOf()
             for(i in 0 until responses.length()) {
                 response = responses.getJSONObject(i)
                 responseList.add(
                     EPDSResponseData(
-                        response.getString(KEY_TEXT),
-                        response.getInt(KEY_SCORE)
+                        response.getInt(EPDSResponseData.KEY_ID),
+                        response.getString(EPDSResponseData.KEY_TEXT),
+                        response.getInt(EPDSResponseData.KEY_SCORE)
                     )
                 )
             }
 
             questionList.add(MutableLiveData<EPDSQuestionData>().apply {
                 value = EPDSQuestionData(
-                    question.getString(KEY_QUESTION),
+                    question.getInt(EPDSQuestionData.KEY_ID),
+                    question.getString(EPDSQuestionData.KEY_VERSION),
+                    question.getString(EPDSQuestionData.KEY_QUESTION),
                     responseList,
                     -1
                 )
@@ -48,9 +51,5 @@ class EPDSResourceLoader {
 
     companion object {
         const val TAG = "EPDSResourceLoader"
-        const val KEY_QUESTION = "question"
-        const val KEY_RESPONSES = "responses"
-        const val KEY_TEXT = "text"
-        const val KEY_SCORE = "score"
     }
 }

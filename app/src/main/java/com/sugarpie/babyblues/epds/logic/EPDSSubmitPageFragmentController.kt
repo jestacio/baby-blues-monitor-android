@@ -31,9 +31,9 @@ class EPDSSubmitPageFragmentController {
 
             val act = Utils.getActivityFromView(it)
 
-            viewModel.saveToFile()
-
             if (act != null) {
+                viewModel.saveToFile(act.applicationContext)
+
                 val intent = Intent().apply {
                     setClass(act.applicationContext, EPDSScoreActivity::class.java)
                     putExtra(SharedExtras.EXTRA_SCORE, viewModel.getScore().value)
