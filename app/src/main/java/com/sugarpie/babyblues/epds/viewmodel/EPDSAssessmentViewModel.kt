@@ -5,17 +5,68 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sugarpie.babyblues.Log
+import com.sugarpie.babyblues.Utils
 import com.sugarpie.babyblues.epds.data.EPDSQuestionData
 import com.sugarpie.babyblues.epds.logic.EPDSResourceLoader
 import com.sugarpie.babyblues.epds.data.EPDSResponseData
+import org.json.JSONArray
+import org.json.JSONObject
+import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.text.StringBuilder
 
 class EPDSAssessmentViewModel : ViewModel() {
 
+    private var timestamp: String = ""
     private var list: List<MutableLiveData<EPDSQuestionData>>? = null
     private var score: MutableLiveData<Int> = MutableLiveData<Int>()
+
+    fun saveToFile(ctx: Context) {
+        val resultsDir = Utils.getEPDSResultsDir(ctx)
+        val newFilename = resultsDir.absolutePath + "/" + timestamp
+
+        Log.d(TAG, "newFilename=$newFilename")
+
+        val newFile = File(newFilename)
+
+        if (!newFile.exists()) {
+            newFile.createNewFile()
+        }
+
+        newFile.writeText(this.toJsonStr())
+    }
+
+    private fun toJsonStr(): String {
+        val jsonObject = JSONObject()
+        jsonObject.put(KEY_VERSION, VALUE_VERSION)
+        jsonObject.put(KEY_TIMESTAMP, timestamp)
+        jsonObject.put(KEY_SCORE, score.value)
+        jsonObject.put(KEY_QUESTIONS, questionsAsJsonArray())
+        val jsonStr = jsonObject.toString(2)
+
+        Log.d(TAG, "jsonStr: $jsonStr")
+
+        return jsonStr
+    }
+
+    private fun setTimestamp(ts: String) {
+        timestamp = ts
+        Log.d(TAG, "setTimestamp $ts")
+    }
+
+    private fun questionsAsJsonArray(): JSONArray {
+        val jsonArray = JSONArray()
+
+        list?.forEach {
+            val questionData = it.value
+            val jsonObj = questionData?.toJsonObj()
+
+            jsonArray.put(jsonObj)
+        }
+
+        return jsonArray
+    }
 
     /**
      * Reloads from the string array resource file
@@ -24,17 +75,21 @@ class EPDSAssessmentViewModel : ViewModel() {
         val loader = EPDSResourceLoader()
         list = loader.loadQuestionsAndResponses(ctx)
         score.apply { value = -1 }
+
+        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd-HH-mm-ss-EEE", Locale.ENGLISH)
+        val prettyTimestamp = simpleDateFormat.format(GregorianCalendar().time)
+        setTimestamp(prettyTimestamp)
     }
 
     fun getQuestionData(idx: Int): LiveData<EPDSQuestionData> {
         return when (list) {
             null -> MutableLiveData<EPDSQuestionData>().apply {
                 value = EPDSQuestionData(
-                    "", listOf(
-                        EPDSResponseData("", 0),
-                        EPDSResponseData("", 0),
-                        EPDSResponseData("", 0),
-                        EPDSResponseData("", 0)
+                    0, "", "", listOf(
+                        EPDSResponseData(0, "", 0),
+                        EPDSResponseData(0, "", 0),
+                        EPDSResponseData(0, "", 0),
+                        EPDSResponseData(0, "", 0)
                     ),
                     -1
                 )
@@ -47,11 +102,11 @@ class EPDSAssessmentViewModel : ViewModel() {
         return when (list) {
             null -> MutableLiveData<EPDSQuestionData>().apply {
                 value = EPDSQuestionData(
-                    "", listOf(
-                        EPDSResponseData("", 0),
-                        EPDSResponseData("", 0),
-                        EPDSResponseData("", 0),
-                        EPDSResponseData("", 0)
+                    0, "", "", listOf(
+                        EPDSResponseData(0, "", 0),
+                        EPDSResponseData(0, "", 0),
+                        EPDSResponseData(0, "", 0),
+                        EPDSResponseData(0, "", 0)
                     ),
                     -1
                 )
@@ -62,7 +117,7 @@ class EPDSAssessmentViewModel : ViewModel() {
 
     fun updateResponse(questionIdx: Int, selectedIdx: Int) {
         val mutableLiveData = getMutableQuestionData(questionIdx)
-        mutableLiveData.apply { value?.selectedResponse = selectedIdx }
+        mutableLiveData.apply { value?.selectedResponseId = selectedIdx }
 
         if (list == null) {
             Log.w(TAG, "updateResponse(): list is null")
@@ -71,8 +126,8 @@ class EPDSAssessmentViewModel : ViewModel() {
 
         var newScore = 0
         list?.forEach {
-            Log.d(TAG, "updateResponse(): $questionIdx selectedResponse=${it.value?.selectedResponse!!}")
-            if (it.value?.selectedResponse!! < 0) {
+            Log.d(TAG, "updateResponse(): $questionIdx selectedResponse=${it.value?.selectedResponseId!!}")
+            if (it.value?.selectedResponseId!! < 0) {
                 newScore = -1
                 return@forEach
             }
@@ -89,7 +144,7 @@ class EPDSAssessmentViewModel : ViewModel() {
             list!!.forEach {
                 // wow Kotlin is so idiomatic... /s
                 // I must be doing something wrong cause this is some banging code...
-                newScore += it.value?.responses?.get(it.value!!.selectedResponse)?.score!!
+                newScore += it.value?.responses?.get(it.value!!.selectedResponseId)?.score!!
             }
 
             Log.d(TAG, "updateResponse(): calculated newScore=$newScore")
@@ -104,15 +159,21 @@ class EPDSAssessmentViewModel : ViewModel() {
 
     fun toText(): String {
         val stringBuilder = StringBuilder()
-        val simpleDateFormat = SimpleDateFormat("EEE, MM/dd/yyy", Locale.ENGLISH)
 
         stringBuilder.append("Edinburgh Postnatal Depression Scale\n")
         stringBuilder.append("Date: ")
-        stringBuilder.append(simpleDateFormat.format(GregorianCalendar().time))
+        stringBuilder.append(Utils.prettyTimestamp(timestamp))
         stringBuilder.append("\n\n")
 
-        stringBuilder.append("score: ")
+        stringBuilder.append("Score: ")
         stringBuilder.append(score.value)
+        stringBuilder.append("\n\n")
+
+        stringBuilder.append("Question Count: ")
+        when (list) {
+            null -> stringBuilder.append("0")
+            else -> stringBuilder.append(list!!.size)
+        }
         stringBuilder.append("\n\n")
 
         list?.forEach {
@@ -129,5 +190,49 @@ class EPDSAssessmentViewModel : ViewModel() {
 
     companion object {
         const val TAG = "EPDSAssessmentViewModel"
+
+        const val VALUE_VERSION = "1.0"
+        const val KEY_VERSION = "version"
+        const val KEY_TIMESTAMP = "timestamp"
+        const val KEY_QUESTIONS = "questions"
+        const val KEY_SCORE = "score"
+
+        fun fromJsonStr(jsonStr: String): EPDSAssessmentViewModel {
+            Log.d(TAG, "fromJsonStr: $jsonStr")
+            val retval = EPDSAssessmentViewModel()
+            val questions = mutableListOf<MutableLiveData<EPDSQuestionData>>()
+            val jsonObject = JSONObject(jsonStr)
+            val questionsJsonArray = jsonObject.getJSONArray(KEY_QUESTIONS)
+
+            retval.timestamp = jsonObject.optString(KEY_TIMESTAMP)
+            retval.score.apply { value = jsonObject.optInt(KEY_SCORE) }
+            for (i in 0 until questionsJsonArray.length()) {
+                val questionJsonObject = questionsJsonArray.getJSONObject(i)
+                val responsesJsonArray = questionJsonObject.getJSONArray(EPDSQuestionData.KEY_RESPONSES)
+                val responses = mutableListOf<EPDSResponseData>()
+
+                for (j in 0 until responsesJsonArray.length()) {
+                    val responseJsonObject = responsesJsonArray.getJSONObject(j)
+                    Log.d(TAG, "fromJsonStr: adding response from ${responseJsonObject.toString(2)}")
+                    responses.add(EPDSResponseData(
+                        responseJsonObject.getInt(EPDSResponseData.KEY_ID),
+                        responseJsonObject.getString(EPDSResponseData.KEY_TEXT),
+                        responseJsonObject.getInt(EPDSResponseData.KEY_SCORE)))
+                }
+
+                questions.add(MutableLiveData<EPDSQuestionData>().apply {
+                    value = EPDSQuestionData(
+                        questionJsonObject.getInt(EPDSQuestionData.KEY_ID),
+                        questionJsonObject.getString(EPDSQuestionData.KEY_VERSION),
+                        questionJsonObject.getString(EPDSQuestionData.KEY_QUESTION),
+                        responses,
+                        questionJsonObject.getInt(EPDSQuestionData.KEY_SELECTED_RESPONSE_ID))
+                })
+            }
+
+            retval.list = questions
+
+            return retval
+        }
     }
 }

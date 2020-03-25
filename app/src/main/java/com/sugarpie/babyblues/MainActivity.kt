@@ -7,6 +7,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,7 +19,17 @@ class MainActivity : AppCompatActivity() {
         Log.w(TAG, "onCreate w log")
         Log.e(TAG, "onCreate e log")
 
+        // create directory for completed assessments
+        val ctx = applicationContext
+        val resultsDir = Utils.getEPDSResultsDir(ctx)
+        if (!resultsDir.exists()) {
+            resultsDir.mkdirs()
+        }
+
         setContentView(R.layout.activity_main)
+
+        setSupportActionBar(toolbar)
+
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
         val navController = findNavController(R.id.nav_host_fragment)

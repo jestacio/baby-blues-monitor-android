@@ -15,21 +15,27 @@
     <string-array name="epds_questions_and_responses_array">
         <item>
             {
-                \"question\": \"1. I have been able to laugh and see the funny side of things\",
+                \"id\": 1,
+                \"version\": \"1.0\",
+                \"question\": \"I have been able to laugh and see the funny side of things\",
                 \"responses\": [
                     {
+                        \"id\": 0,
                         \"text\": \"As much as I always could\",
                         \"score\": 0
                     },
                     {
+                        \"id\": 1,
                         \"text\": \"Not quite so much now\",
                         \"score\": 1
                     },
                     {
+                        \"id\": 2,
                         \"text\": \"Definitely not so much now\",
                         \"score\": 2
                     },
                     {
+                        \"id\": 3,
                         \"text\": \"Not at all\",
                         \"score\": 3
                     }
@@ -38,21 +44,27 @@
         </item>
         <item>
             {
-                \"question\": \"2. I have looked forward with enjoyment to things\",
+                \"id\": 2,
+                \"version\": \"1.0\",
+                \"question\": \"I have looked forward with enjoyment to things\",
                 \"responses\": [
                     {
+                        \"id\": 0,
                         \"text\": \"As much as I ever did\",
                         \"score\": 0
                     },
                     {
+                        \"id\": 1,
                         \"text\": \"Rather less than I used to\",
                         \"score\": 1
                     },
                     {
+                        \"id\": 2,
                         \"text\": \"Definitely less than I used to\",
                         \"score\": 2
                     },
                     {
+                        \"id\": 3,
                         \"text\": \"Not at all\",
                         \"score\": 3
                     }
@@ -61,21 +73,27 @@
         </item>
         <item>
             {
-                \"question\": \"3. I have blamed myself unnecessarily when things went wrong\",
+                \"id\": 3,
+                \"version\": \"1.0\",
+                \"question\": \"I have blamed myself unnecessarily when things went wrong\",
                 \"responses\": [
                     {
+                        \"id\": 0,
                         \"text\": \"Yes, most of the time\",
                         \"score\": 3
                     },
                     {
+                        \"id\": 1,
                         \"text\": \"Yes, some of the time\",
                         \"score\": 2
                     },
                     {
+                        \"id\": 2,
                         \"text\": \"Not very often\",
                         \"score\": 1
                     },
                     {
+                        \"id\": 3,
                         \"text\": \"No, never\",
                         \"score\": 0
                     }
@@ -84,21 +102,27 @@
         </item>
         <item>
             {
-                \"question\": \"4. I have been anxious or worried for no good reason\",
+                \"id\": 4,
+                \"version\": \"1.0\",
+                \"question\": \"I have been anxious or worried for no good reason\",
                 \"responses\": [
                     {
+                        \"id\": 0,
                         \"text\": \"No, not at all\",
                         \"score\": 0
                     },
                     {
+                        \"id\": 1,
                         \"text\": \"Hardly ever\",
                         \"score\": 1
                     },
                     {
+                        \"id\": 2,
                         \"text\": \"Yes, sometimes\",
                         \"score\": 2
                     },
                     {
+                        \"id\": 3,
                         \"text\": \"Yes, very often\",
                         \"score\": 3
                     }
@@ -107,21 +131,27 @@
         </item>
         <item>
             {
-                \"question\": \"5. I have felt scared or panicky for no very good reason\",
+                \"id\": 5,
+                \"version\": \"1.0\",
+                \"question\": \"I have felt scared or panicky for no very good reason\",
                 \"responses\": [
                     {
+                        \"id\": 0,
                         \"text\": \"Yes, quite a lot\",
                         \"score\": 3
                     },
                     {
+                        \"id\": 1,
                         \"text\": \"Yes, sometimes\",
                         \"score\": 2
                     },
                     {
+                        \"id\": 2,
                         \"text\": \"No, not much\",
                         \"score\": 1
                     },
                     {
+                        \"id\": 3,
                         \"text\": \"No, not at all\",
                         \"score\": 0
                     }
@@ -130,21 +160,27 @@
         </item>
         <item>
             {
-                \"question\": \"6. Things have been getting on top of me\",
+                \"id\": 6,
+                \"version\": \"1.0\",
+                \"question\": \"Things have been getting on top of me\",
                 \"responses\": [
                     {
+                        \"id\": 0,
                         \"text\": \"Yes, most of the time I haven\'t been able to cope at all\",
                         \"score\": 3
                     },
                     {
+                        \"id\": 1,
                         \"text\": \"Yes, sometimes I haven\'t been coping as well as usual\",
                         \"score\": 2
                     },
                     {
+                        \"id\": 2,
                         \"text\": \"No, most of the time I have coped quite well\",
                         \"score\": 1
                     },
                     {
+                        \"id\": 3,
                         \"text\": \"No, I have been coping as well as ever\",
                         \"score\": 0
                     }
@@ -153,21 +189,27 @@
         </item>
         <item>
             {
-                \"question\": \"7. I have been so unhappy that I have had difficulty sleeping\",
+                \"id\": 7,
+                \"version\": \"1.0\",
+                \"question\": \"I have been so unhappy that I have had difficulty sleeping\",
                 \"responses\": [
                     {
+                        \"id\": 0,
                         \"text\": \"Yes, most of the time\",
                         \"score\": 3
                     },
                     {
+                        \"id\": 1,
                         \"text\": \"Yes, sometimes\",
                         \"score\": 2
                     },
                     {
+                        \"id\": 2,
                         \"text\": \"Not very often\",
                         \"score\": 1
                     },
                     {
+                        \"id\": 3,
                         \"text\": \"No, not at all\",
                         \"score\": 0
                     }
@@ -176,21 +218,27 @@
         </item>
         <item>
             {
-                \"question\": \"8. I have felt sad or miserable\",
+                \"id\": 8,
+                \"version\": \"1.0\",
+                \"question\": \"I have felt sad or miserable\",
                 \"responses\": [
                     {
+                        \"id\": 0,
                         \"text\": \"Yes, most of the time\",
                         \"score\": 3
                     },
                     {
+                        \"id\": 1,
                         \"text\": \"Yes, quite often\",
                         \"score\": 2
                     },
                     {
+                        \"id\": 2,
                         \"text\": \"Not very often\",
                         \"score\": 1
                     },
                     {
+                        \"id\": 3,
                         \"text\": \"No, not at all\",
                         \"score\": 0
                     }
@@ -199,21 +247,27 @@
         </item>
         <item>
             {
-                \"question\": \"9. I have been so unhappy that I have been crying\",
+                \"id\": 9,
+                \"version\": \"1.0\",
+                \"question\": \"I have been so unhappy that I have been crying\",
                 \"responses\": [
                     {
+                        \"id\": 0,
                         \"text\": \"Yes, most of the time\",
                         \"score\": 3
                     },
                     {
+                        \"id\": 1,
                         \"text\": \"Yes, quite often\",
                         \"score\": 2
                     },
                     {
+                        \"id\": 2,
                         \"text\": \"Only occasionally\",
                         \"score\": 1
                     },
                     {
+                        \"id\": 3,
                         \"text\": \"No, never\",
                         \"score\": 0
                     }
@@ -222,21 +276,27 @@
         </item>
         <item>
             {
-                \"question\": \"10. The thought of harming myself has occurred to me\",
+                \"id\": 10,
+                \"version\": \"1.0\",
+                \"question\": \"The thought of harming myself has occurred to me\",
                 \"responses\": [
                     {
+                        \"id\": 0,
                         \"text\": \"Yes, quite often\",
                         \"score\": 3
                     },
                     {
+                        \"id\": 1,
                         \"text\": \"Sometimes\",
                         \"score\": 2
                     },
                     {
+                        \"id\": 2,
                         \"text\": \"Hardly ever\",
                         \"score\": 1
                     },
                     {
+                        \"id\": 3,
                         \"text\": \"Never\",
                         \"score\": 0
                     }

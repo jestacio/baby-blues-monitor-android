@@ -15,7 +15,7 @@
 
         It is very important that you not discuss your answers with anyone.\n\n
 
-        Use the arrow buttons or swipe the screen to continue.
+        Use the arrow buttons above or swipe the screen to continue.
     </string>
     <string name="epds_inthepastsevendays">In the past 7 days:</string>
     <string name="epds_example_inthepastsevendays">Here is an example, already completed.\n\nIn the
@@ -39,11 +39,26 @@
     </string>
     <string name="epds_score_low">Based on your responses, you are in good health.\n\n
     </string>
+    <string name="epds_resources">Women with postpartum depression need not feel alone. They may
+        find useful information on the web sites of the Office On Women\'s Health Information Center
+        (https://www.womenshealth.gov/mental-health/mental-health-conditions/postpartum-depression)
+        and from groups such as Postpartum Support International
+        (https://www.postpartum.net/).\n\n
+
+        You can also call or text the OWH helpline by tapping the buttons below.\n\n
+
+        The OWH Helpline hours are 9 a.m. — 6 p.m. ET, Monday — Friday\n\n
+
+        The PSI HelpLine does not handle emergencies. People in crisis should call their local
+        emergency number or the National Suicide Prevention Hot line at 1-800-273-TALK (8255).
+    </string>
 
     <!-- General -->
     <string name="finish">Finish</string>
     <string name="share_results">Share Results</string>
     <string name="next">Next</string>
     <string name="prev">Prev</string>
+    <string name="ok">OK</string>
     <string name="empty" />
+    <string name="get_help">Get Help</string>
 </resources>

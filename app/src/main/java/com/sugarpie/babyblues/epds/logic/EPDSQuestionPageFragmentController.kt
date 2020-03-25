@@ -43,7 +43,7 @@ class EPDSQuestionPageFragmentController {
         val resp3 = view.findViewById<RadioButton>(R.id.epds_response3)
 
         // set selected radio button, or clear selection
-        when (it.selectedResponse) {
+        when (it.selectedResponseId) {
             0 -> resp0.isSelected = true
             1 -> resp1.isSelected = true
             2 -> resp2.isSelected = true
