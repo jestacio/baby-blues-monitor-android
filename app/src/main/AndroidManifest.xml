@@ -3,11 +3,11 @@
     package="com.sugarpie.babyblues">
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
+        android:supportsRtl="false"
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
@@ -25,6 +25,11 @@
         </activity>
         <activity
             android:name=".epds.view.EPDSScoreActivity"
+            android:label="@string/empty"
+            android:theme="@style/EPDSTheme">
+        </activity>
+        <activity
+            android:name=".epds.view.EPDSResultActivity"
             android:label="@string/empty"
             android:theme="@style/EPDSTheme">
         </activity>

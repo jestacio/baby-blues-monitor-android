@@ -162,11 +162,18 @@ class EPDSAssessmentViewModel : ViewModel() {
 
         stringBuilder.append("Edinburgh Postnatal Depression Scale\n")
         stringBuilder.append("Date: ")
-        stringBuilder.append(timestamp)
+        stringBuilder.append(Utils.prettyTimestamp(timestamp))
         stringBuilder.append("\n\n")
 
-        stringBuilder.append("score: ")
+        stringBuilder.append("Score: ")
         stringBuilder.append(score.value)
+        stringBuilder.append("\n\n")
+
+        stringBuilder.append("Question Count: ")
+        when (list) {
+            null -> stringBuilder.append("0")
+            else -> stringBuilder.append(list!!.size)
+        }
         stringBuilder.append("\n\n")
 
         list?.forEach {
@@ -191,7 +198,41 @@ class EPDSAssessmentViewModel : ViewModel() {
         const val KEY_SCORE = "score"
 
         fun fromJsonStr(jsonStr: String): EPDSAssessmentViewModel {
-            return EPDSAssessmentViewModel()
+            Log.d(TAG, "fromJsonStr: $jsonStr")
+            val retval = EPDSAssessmentViewModel()
+            val questions = mutableListOf<MutableLiveData<EPDSQuestionData>>()
+            val jsonObject = JSONObject(jsonStr)
+            val questionsJsonArray = jsonObject.getJSONArray(KEY_QUESTIONS)
+
+            retval.timestamp = jsonObject.optString(KEY_TIMESTAMP)
+            retval.score.apply { value = jsonObject.optInt(KEY_SCORE) }
+            for (i in 0 until questionsJsonArray.length()) {
+                val questionJsonObject = questionsJsonArray.getJSONObject(i)
+                val responsesJsonArray = questionJsonObject.getJSONArray(EPDSQuestionData.KEY_RESPONSES)
+                val responses = mutableListOf<EPDSResponseData>()
+
+                for (j in 0 until responsesJsonArray.length()) {
+                    val responseJsonObject = responsesJsonArray.getJSONObject(j)
+                    Log.d(TAG, "fromJsonStr: adding response from ${responseJsonObject.toString(2)}")
+                    responses.add(EPDSResponseData(
+                        responseJsonObject.getInt(EPDSResponseData.KEY_ID),
+                        responseJsonObject.getString(EPDSResponseData.KEY_TEXT),
+                        responseJsonObject.getInt(EPDSResponseData.KEY_SCORE)))
+                }
+
+                questions.add(MutableLiveData<EPDSQuestionData>().apply {
+                    value = EPDSQuestionData(
+                        questionJsonObject.getInt(EPDSQuestionData.KEY_ID),
+                        questionJsonObject.getString(EPDSQuestionData.KEY_VERSION),
+                        questionJsonObject.getString(EPDSQuestionData.KEY_QUESTION),
+                        responses,
+                        questionJsonObject.getInt(EPDSQuestionData.KEY_SELECTED_RESPONSE_ID))
+                })
+            }
+
+            retval.list = questions
+
+            return retval
         }
     }
 }

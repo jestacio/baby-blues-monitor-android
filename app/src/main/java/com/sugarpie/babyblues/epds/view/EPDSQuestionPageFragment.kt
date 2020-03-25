@@ -43,10 +43,6 @@ class EPDSQuestionPageFragment(private val position: Int,
         rg.setOnCheckedChangeListener(controller.getRGOnCheckedChangeListener(viewModel, index,
             viewPager))
 
-        when(index) {
-            0 -> view.findViewById<TextView>(R.id.text_history)?.setText(R.string.app_name)
-        }
-
         return view
     }
 

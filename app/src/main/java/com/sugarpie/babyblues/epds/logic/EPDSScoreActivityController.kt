@@ -9,7 +9,7 @@ import com.sugarpie.babyblues.R
 import com.sugarpie.babyblues.Utils
 import com.sugarpie.babyblues.epds.view.EPDSResourcesActivity
 
-class EPDSScoreActivityController {
+open class EPDSScoreActivityController {
 
     fun updateViews(score: Int, button_finish: Button, text_result: TextView) {
         if (score >= MIN_HIGH_SCORE) {
@@ -17,7 +17,7 @@ class EPDSScoreActivityController {
             text_result.setText(R.string.epds_score_high)
         } else {
             button_finish.setText(R.string.finish)
-            text_result.setText(R.string.epds_score_high)
+            text_result.setText(R.string.epds_score_low)
         }
     }
 
@@ -56,8 +56,9 @@ class EPDSScoreActivityController {
 
             when {
                 score >= MIN_HIGH_SCORE -> {
-                    val intent = Intent()
-                    intent.setClass(act.applicationContext, EPDSResourcesActivity::class.java)
+                    val intent = Intent().apply {
+                        setClass(act.applicationContext, EPDSResourcesActivity::class.java)
+                    }
                     act.startActivity(intent)
                     act.finish()
                 }
