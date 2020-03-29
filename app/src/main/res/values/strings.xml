@@ -53,6 +53,14 @@
         emergency number or the National Suicide Prevention Hot line at 1-800-273-TALK (8255).
     </string>
 
+    <!-- Settings -->
+    <string name="setting_remindersenabled_title">Enable Reminders</string>
+    <string name="setting_remindertime_title">Reminder Time</string>
+    <string name="setting_reminderday_title">Reminder Day</string>
+    <string name="setting_remindersenabled_summary">Enable weekly reminder to check on your mental health</string>
+    <string name="setting_remindertime_summary">Set the time to show the reminder notification</string>
+    <string name="setting_reminderday_summary">Set the day to show the reminder notification</string>
+
     <!-- General -->
     <string name="finish">Finish</string>
     <string name="share_results">Share Results</string>

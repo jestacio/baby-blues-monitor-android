@@ -11,6 +11,16 @@
         <item>fox</item>
     </string-array>
 
+    <string-array name="daysofweek_array">
+        <item>Sunday</item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+    </string-array>
+
     <!-- Edinburgh Postnatal Depression Scale Questions and Responses -->
     <string-array name="epds_questions_and_responses_array">
         <item>

@@ -1,0 +1,27 @@
+<androidx.preference.PreferenceScreen
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <SwitchPreferenceCompat
+        app:key="reminder_enabled"
+        app:title="@string/setting_remindersenabled_title"
+        app:summary="@string/setting_remindersenabled_summary"
+        app:defaultValue="false"
+        app:icon="@drawable/ic_notifications_black_24dp"/>
+
+    <ListPreference
+        app:key="reminder_dayofweek"
+        app:title="@string/setting_reminderday_title"
+        app:summary="@string/setting_reminderday_summary"
+        app:icon="@drawable/ic_today_black_24dp"
+        app:defaultValue="Saturday"
+        app:entries="@array/daysofweek_array"
+        app:entryValues="@array/daysofweek_array" />
+
+    <com.sugarpie.babyblues.reminders.view.TimePreference
+        app:key="reminder_time"
+        app:title="@string/setting_remindertime_title"
+        app:summary="@string/setting_remindertime_summary"
+        app:icon="@drawable/ic_schedule_black_24dp"
+        app:defaultValue="12:00"/>
+
+</androidx.preference.PreferenceScreen>

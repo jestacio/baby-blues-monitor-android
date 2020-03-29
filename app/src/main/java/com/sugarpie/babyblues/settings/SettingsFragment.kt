@@ -1,31 +1,40 @@
 package com.sugarpie.babyblues.settings
 
+import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.preference.Preference
+import androidx.preference.PreferenceFragmentCompat
 import com.sugarpie.babyblues.R
+import com.sugarpie.babyblues.reminders.logic.ReminderUtils
+import com.sugarpie.babyblues.reminders.view.TimePreference
+import com.sugarpie.babyblues.reminders.view.TimePreferenceDialogFragmentCompat
 
-class SettingsFragment : Fragment() {
+class SettingsFragment : PreferenceFragmentCompat() {
 
-    private lateinit var settingsViewModel: SettingsViewModel
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        setPreferencesFromResource(R.xml.settings, rootKey)
+    }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        settingsViewModel =
-            ViewModelProviders.of(this).get(SettingsViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_settings, container, false)
-        val textView: TextView = root.findViewById(R.id.text_settings)
-        settingsViewModel.text.observe(this, Observer {
-            textView.text = it
-        })
-        return root
+    override fun onDisplayPreferenceDialog(preference: Preference?) {
+        if (preference is TimePreference) {
+            val dialogFragment = TimePreferenceDialogFragmentCompat()
+            val bundle = Bundle(1)
+            bundle.putString("key", preference.getKey())
+            dialogFragment.arguments = bundle
+            dialogFragment.setTargetFragment(this, 0)
+            this.fragmentManager?.let { dialogFragment.show(it,
+                "androidx.preference.PreferenceFragmentCompat.DIALOG") }
+        } else {
+            super.onDisplayPreferenceDialog(preference)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        preferenceScreen.sharedPreferences.registerOnSharedPreferenceChangeListener {
+            sharedPrefs: SharedPreferences, key: String ->
+                context?.let { ReminderUtils.setAlarm(it) }
+        }
     }
 }
