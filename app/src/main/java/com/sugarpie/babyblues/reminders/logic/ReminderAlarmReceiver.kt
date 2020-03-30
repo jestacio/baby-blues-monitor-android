@@ -8,7 +8,9 @@ import com.sugarpie.babyblues.Log
 class ReminderAlarmReceiver : BroadcastReceiver() {
 
     override fun onReceive(ctx: Context, intent: Intent) {
-        Log.d(TAG, "onReceive")
+        Log.d(TAG, "onReceive ${intent.action}")
+
+        ReminderUtils.showReminder(ctx)
     }
 
     companion object {

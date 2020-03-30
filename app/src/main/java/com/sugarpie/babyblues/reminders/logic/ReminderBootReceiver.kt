@@ -12,7 +12,7 @@ import com.sugarpie.babyblues.Log
 class ReminderBootReceiver : BroadcastReceiver() {
 
     override fun onReceive(ctx: Context, intent: Intent) {
-        Log.d(TAG, "onReceive")
+        Log.d(TAG, "onReceive ${intent.action}")
         if (intent.action == "android.intent.action.BOOT_COMPLETED") {
             ReminderUtils.setAlarm(ctx)
         }

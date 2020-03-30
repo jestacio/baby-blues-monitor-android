@@ -40,6 +40,9 @@ class TimePreferenceDialogFragmentCompat : PreferenceDialogFragmentCompat(),
     }
 
     override fun <T : Preference?> findPreference(key: CharSequence): T? {
+
+        // unchecked cast needed since we can't modify the library code to call this with the
+        // correct type parameter, and we can't modify the function signature
         @Suppress("UNCHECKED_CAST")
         return this.preference as T
     }

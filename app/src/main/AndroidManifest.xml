@@ -3,6 +3,8 @@
     package="com.sugarpie.babyblues">
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.SET_ALARM" />
 
     <application
         android:allowBackup="false"
@@ -50,8 +52,7 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
         </receiver>
-        <receiver android:name="com.sugarpie.babyblues.reminders.logic.ReminderAlarmReceiver"
-            android:exported="false">
+        <receiver android:name="com.sugarpie.babyblues.reminders.logic.ReminderAlarmReceiver">
             <intent-filter>
                 <action android:name="com.sugarpie.babyblues.EPDS_REMINDER_WEEKLY"/>
             </intent-filter>
