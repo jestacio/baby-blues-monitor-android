@@ -2,6 +2,7 @@ package com.sugarpie.babyblues.settings
 
 import android.content.SharedPreferences
 import android.os.Bundle
+import androidx.lifecycle.ViewModelProviders
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.sugarpie.babyblues.R
@@ -33,8 +34,11 @@ class SettingsFragment : PreferenceFragmentCompat() {
         super.onResume()
 
         preferenceScreen.sharedPreferences.registerOnSharedPreferenceChangeListener {
-            sharedPrefs: SharedPreferences, key: String ->
-                context?.let { ReminderUtils.setAlarm(it) }
+            _: SharedPreferences, _: String -> context?.let {
+                val viewModel = ViewModelProviders.of(this).get(SettingsViewModel::class.java)
+                viewModel.handleSettingsUpdated(it)
+                ReminderUtils.setAlarm(it)
+            }
         }
     }
 }

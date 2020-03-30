@@ -22,13 +22,13 @@ class ReminderUtils {
 
     companion object {
 
-        const val TAG = "ReminderUtils"
-        private const val KEY_REMINDER_ENABLED = "reminder_enabled"
-        private const val KEY_REMINDER_DAYOFWEEK = "reminder_dayofweek"
-        private const val KEY_REMINDER_TIME = "reminder_time"
-        private const val DEFAULT_REMINDER_ENABLED = false
-        private const val DEFAULT_REMINDER_TIME = TimePreference.DEFAULT_VALUE
-        private const val DEFAULT_REMINDER_DAYOFWEEK = "Saturday"
+        private const val TAG = "ReminderUtils"
+        const val KEY_REMINDER_ENABLED = "reminder_enabled"
+        const val KEY_REMINDER_DAYOFWEEK = "reminder_dayofweek"
+        const val KEY_REMINDER_TIME = "reminder_time"
+        const val DEFAULT_REMINDER_ENABLED = false
+        const val DEFAULT_REMINDER_TIME = TimePreference.DEFAULT_VALUE
+        const val DEFAULT_REMINDER_DAYOFWEEK = "Saturday"
         private const val REQUESTCODE_EPDS_REMINDER = 0
         private const val ACTION_EPDS_REMINDER = "com.sugarpie.babyblues.EPDS_REMINDER_WEEKLY"
         private const val NOTIFICATION_CHANNEL_EPDS_REMINDER = "NOTIFICATION_CHANNEL_EPDS_REMINDER"

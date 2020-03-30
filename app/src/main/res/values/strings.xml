@@ -5,6 +5,11 @@
     <string name="title_settings">Settings</string>
     <string name="title_history">History</string>
 
+    <!-- Home fragment -->
+    <string name="button_checkmymentalhealth">Check my mental health</string>
+    <string name="text_remindernotset">Go to Settings to set up your reminder.</string>
+    <string name="text_reminderset">Your reminder is set to %s at %s.</string>
+
     <!-- EPDS Assessment -->
     <string name="epds_assessment_name">Edinburgh Postnatal Depression Scale</string>
     <string name="epds_instructions">As you are pregnant or have recently had a baby, let\'s check
