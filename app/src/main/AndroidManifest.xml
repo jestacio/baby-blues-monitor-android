@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.sugarpie.babyblues">
 
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.SET_ALARM" />
+
     <application
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
@@ -9,6 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
+
+        <!-- Activities -->
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">
@@ -38,6 +44,23 @@
             android:label="@string/empty"
             android:theme="@style/EPDSTheme">
         </activity>
-    </application>
+        <activity
+            android:name=".about.AboutActivity"
+            android:label="@string/setting_about_title"
+            android:theme="@style/EPDSTheme">
+        </activity>
 
+        <!-- Receivers -->
+        <receiver android:name="com.sugarpie.babyblues.reminders.logic.ReminderBootReceiver"
+            android:enabled="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.sugarpie.babyblues.reminders.logic.ReminderAlarmReceiver">
+            <intent-filter>
+                <action android:name="com.sugarpie.babyblues.EPDS_REMINDER_WEEKLY"/>
+            </intent-filter>
+        </receiver>
+    </application>
 </manifest>

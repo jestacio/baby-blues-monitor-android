@@ -7,6 +7,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.sugarpie.babyblues.reminders.logic.ReminderUtils
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -25,6 +26,9 @@ class MainActivity : AppCompatActivity() {
         if (!resultsDir.exists()) {
             resultsDir.mkdirs()
         }
+
+        // create notification channel if needed
+        ReminderUtils.createNotificationChannel(ctx)
 
         setContentView(R.layout.activity_main)
 

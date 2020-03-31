@@ -1,6 +1,7 @@
 package com.sugarpie.babyblues.home.logic
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.view.View
 import android.widget.TextView
@@ -9,19 +10,27 @@ import com.sugarpie.babyblues.R
 import com.sugarpie.babyblues.settings.SettingsData
 import com.sugarpie.babyblues.epds.view.EPDSAssessmentActivity
 import com.sugarpie.babyblues.Utils
+import com.sugarpie.babyblues.reminders.logic.ReminderUtils
 import java.util.*
 
 class HomeFragmentController {
 
-    fun updateViews(it: SettingsData, textView: TextView) {
+    fun updateViews(ctx: Context, it: SettingsData, textView: TextView) {
+        val appCtx = ctx.applicationContext
+        val res = appCtx.resources
         val settingsMap = it.map
-        val reminderTimestamp = settingsMap[SettingsData.KEY_REMINDERTIMESTAMP] as GregorianCalendar
-        textView.text = if (it.reminderTimestampHasBeenSet())
-            "The next time we'll check on your mental health will be ${reminderTimestamp.get(
-                Calendar.YEAR)} ${reminderTimestamp.get(Calendar.MONTH)} ${reminderTimestamp.get(
-                Calendar.DAY_OF_MONTH)}"
-        else
-            "Go to Settings to set up your reminder."
+        val enabled = settingsMap[ReminderUtils.KEY_REMINDER_ENABLED]
+        val dayOfWeek = settingsMap[ReminderUtils.KEY_REMINDER_DAYOFWEEK]
+        val time = settingsMap[ReminderUtils.KEY_REMINDER_TIME]
+
+        Log.d(TAG, "updateViews $enabled $dayOfWeek $time")
+
+        textView.text = if (it.reminderTimestampHasBeenSet() && enabled == true) {
+            String.format(Locale.getDefault(), res.getString(R.string.text_reminderset),
+                dayOfWeek, time)
+        } else {
+            res.getString(R.string.text_remindernotset)
+        }
     }
 
     fun getClickListener(view: View): View.OnClickListener? {
