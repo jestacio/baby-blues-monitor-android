@@ -1,6 +1,7 @@
 package com.sugarpie.babyblues.epds.view
 
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import androidx.appcompat.app.AppCompatActivity
 import com.sugarpie.babyblues.R
 import kotlinx.android.synthetic.main.activity_edpsresources.*
@@ -15,5 +16,7 @@ class EPDSResourcesActivity: AppCompatActivity() {
         button_ok.setOnClickListener {
             finish()
         }
+
+        textview.movementMethod = ScrollingMovementMethod()
     }
 }

@@ -77,13 +77,15 @@
     <TextView
         android:id="@+id/epds_example_explanation"
         style="?android:textAppearanceMedium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_marginEnd="@dimen/activity_horizontal_margin"
         android:lineSpacingMultiplier="1.2"
         android:padding="16dp"
+        android:scrollbars="vertical"
         android:text="@string/epds_example_explanation"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/epds_radiogroup" />
