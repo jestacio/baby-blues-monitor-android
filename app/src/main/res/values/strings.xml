@@ -71,6 +71,23 @@
     <string name="setting_remindersenabled_summary">Enable weekly reminder to check on your mental health</string>
     <string name="setting_remindertime_summary">Set the time to show the reminder notification</string>
     <string name="setting_reminderday_summary">Set the day to show the reminder notification</string>
+    <string name="setting_about_title">About</string>
+    <string name="setting_about_summary">View app information</string>
+    <string name="setting_about_text">This app is based on the Edinburgh Postnatal Depression Scale (1).\n\n
+        Postpartum depression is the most common complication of childbearing (2). The 10-question Edinburgh
+        Postnatal Depression Scale (EPDS) is a valuable and efficient way of identifying patients at risk for \"perinatal\"
+        depression. The EPDS is easy to administer and has proven to be an effective screening tool.\n\n
+        Mothers who score above 13 are likely to be suffering from a depressive illness of varying severity. The EPDS
+        score should not override clinical judgment. A careful clinical assessment should be carried out to confirm the
+        diagnosis. The scale indicates how the mother has felt during the previous week. In doubtful cases it may
+        be useful to repeat the tool after 2 weeks. The scale will not detect mothers with anxiety neuroses, phobias or
+        personality disorders.\n\n
+        Sources:\n\n
+        (1) Cox, J.L., Holden, J.M., and Sagovsky, R. 1987. Detection of postnatal depression: Development of the 10-item
+        Edinburgh Postnatal Depression Scale. British Journal of Psychiatry 150:782-786.\n\n
+        (2) K. L. Wisner, B. L. Parry, C. M. Piontek, Postpartum Depression N Engl J Med vol. 347, No 3, July 18, 2002,
+        194-199\n\n
+    </string>
 
     <!-- General -->
     <string name="finish">Finish</string>

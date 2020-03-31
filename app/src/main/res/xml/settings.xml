@@ -1,5 +1,6 @@
 <androidx.preference.PreferenceScreen
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <SwitchPreferenceCompat
         app:key="reminder_enabled"
@@ -23,5 +24,15 @@
         app:summary="@string/setting_remindertime_summary"
         app:icon="@drawable/ic_schedule_black_24dp"
         app:defaultValue="12:00"/>
+
+    <Preference
+        app:key="about"
+        app:title="@string/setting_about_title"
+        app:summary="@string/setting_about_summary"
+        app:icon="@drawable/ic_info_black_24dp">
+        <intent
+            android:targetPackage="com.sugarpie.babyblues"
+            android:targetClass="com.sugarpie.babyblues.about.AboutActivity" />
+    </Preference>
 
 </androidx.preference.PreferenceScreen>

@@ -44,6 +44,11 @@
             android:label="@string/empty"
             android:theme="@style/EPDSTheme">
         </activity>
+        <activity
+            android:name=".about.AboutActivity"
+            android:label="@string/setting_about_title"
+            android:theme="@style/EPDSTheme">
+        </activity>
 
         <!-- Receivers -->
         <receiver android:name="com.sugarpie.babyblues.reminders.logic.ReminderBootReceiver"
