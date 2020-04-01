@@ -13,10 +13,12 @@ class EPDSResourcesActivity: AppCompatActivity() {
 
         setContentView(R.layout.activity_edpsresources)
 
+        toolbar.title = getString(R.string.empty)
+
+        setSupportActionBar(toolbar)
+
         button_ok.setOnClickListener {
             finish()
         }
-
-        textview.movementMethod = ScrollingMovementMethod()
     }
 }
