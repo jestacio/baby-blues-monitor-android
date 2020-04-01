@@ -88,6 +88,8 @@
         (2) K. L. Wisner, B. L. Parry, C. M. Piontek, Postpartum Depression N Engl J Med vol. 347, No 3, July 18, 2002,
         194-199\n\n
     </string>
+    <string name="setting_resources_title">Mental Health Resources</string>
+    <string name="setting_resources_summary">View resources to help manage your mental health</string>
 
     <!-- General -->
     <string name="finish">Finish</string>

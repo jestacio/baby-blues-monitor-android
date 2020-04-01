@@ -35,4 +35,14 @@
             android:targetClass="com.sugarpie.babyblues.about.AboutActivity" />
     </Preference>
 
+    <Preference
+        app:key="resources"
+        app:title="@string/setting_resources_title"
+        app:summary="@string/setting_resources_summary"
+        app:icon="@drawable/ic_favorite_black_24dp">
+        <intent
+            android:targetPackage="com.sugarpie.babyblues"
+            android:targetClass="com.sugarpie.babyblues.epds.view.EPDSResourcesActivity" />
+    </Preference>
+
 </androidx.preference.PreferenceScreen>
