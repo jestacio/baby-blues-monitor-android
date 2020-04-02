@@ -75,7 +75,17 @@
     <string name="setting_reminderday_summary">Set the day to show the reminder notification</string>
     <string name="setting_about_title">About</string>
     <string name="setting_about_summary">View app information</string>
-    <string name="setting_about_text">This app is based on the Edinburgh Postnatal Depression Scale (1).\n\n
+    <string name="setting_about_text">
+        IMPORTANT: The Baby Blues Monitor app is available for academic and entertainment purposes
+        only, without any warranty or guarantee.\n\n
+
+        The Baby Blues Monitor app is not intended to be a substitute for professional medical care.
+        Always seek the advice of your physician or other qualified health provider with any
+        questions you may have regarding a medical condition.\n\n
+
+        ----------\n\n
+
+        This app is based on the Edinburgh Postnatal Depression Scale (1).\n\n
         Postpartum depression is the most common complication of childbearing (2). The 10-question Edinburgh
         Postnatal Depression Scale (EPDS) is a valuable and efficient way of identifying patients at risk for \"perinatal\"
         depression. The EPDS is easy to administer and has proven to be an effective screening tool.\n\n

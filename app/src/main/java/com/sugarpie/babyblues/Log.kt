@@ -6,11 +6,15 @@ class Log {
 
     companion object {
         fun v(tag: String?, msg: String?) {
-            Log.v(tag, msg)
+            if (BuildConfig.DEBUG) {
+                Log.v(tag, msg)
+            }
         }
 
         fun d(tag: String?, msg: String?) {
-            Log.d(tag, msg)
+            if (BuildConfig.DEBUG) {
+                Log.d(tag, msg)
+            }
         }
 
         fun w(tag: String?, msg: String?) {
