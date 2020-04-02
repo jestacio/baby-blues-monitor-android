@@ -11,6 +11,9 @@ class ReminderAlarmReceiver : BroadcastReceiver() {
         Log.d(TAG, "onReceive ${intent.action}")
 
         ReminderUtils.showReminder(ctx)
+
+        // since we can't repeat exact alarms, set it again
+        ReminderUtils.setAlarm(ctx)
     }
 
     companion object {

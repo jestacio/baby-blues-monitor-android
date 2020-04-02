@@ -29,7 +29,7 @@ class EPDSAssessmentActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_edpsassessment)
 
-        toolbar.title = ""
+        toolbar.title = getString(R.string.empty)
 
         setSupportActionBar(toolbar)
         container.layoutTransition?.setAnimateParentHierarchy(false)

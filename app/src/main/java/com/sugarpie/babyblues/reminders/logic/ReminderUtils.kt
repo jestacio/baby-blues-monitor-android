@@ -16,6 +16,7 @@ import com.sugarpie.babyblues.Log
 import com.sugarpie.babyblues.R
 import com.sugarpie.babyblues.epds.view.EPDSAssessmentActivity
 import com.sugarpie.babyblues.reminders.view.TimePreference
+//import java.time.DayOfWeek
 import java.util.*
 
 class ReminderUtils {
@@ -34,15 +35,21 @@ class ReminderUtils {
         private const val NOTIFICATION_CHANNEL_EPDS_REMINDER = "NOTIFICATION_CHANNEL_EPDS_REMINDER"
         private const val NOTIFICATION_ID_EPDS_REMINDER = 0
 
+        /**
+         * Getting day of week value requires Android O, so we don't do it the clean way here.
+         * Also, there is an unsolved problem with accounting for locale when determining what the
+         * int value should be. I couldn't find any clean/obvious solutions in a short time so
+         * I'm making some assumptions so this works for me personally.
+         */
         private fun convertDayOfWeekFromString(str: String) : Int {
             val retval = when (str) {
-                "Monday" -> 1
-                "Tuesday" -> 2
-                "Wednesday" -> 3
-                "Thursday" -> 4
-                "Friday" -> 5
-                "Saturday" -> 6
-                else -> 7
+                "Monday" -> 2 //DayOfWeek.MONDAY.value
+                "Tuesday" -> 3 //DayOfWeek.TUESDAY.value
+                "Wednesday" -> 4 //DayOfWeek.WEDNESDAY.value
+                "Thursday" -> 5 //DayOfWeek.THURSDAY.value
+                "Friday" -> 6 //DayOfWeek.FRIDAY.value
+                "Saturday" -> 7 //DayOfWeek.SATURDAY.value
+                else -> 1 //DayOfWeek.SUNDAY.value
             }
 
             Log.d(TAG, "convertDayOfWeekFromString $str $retval")
@@ -64,7 +71,7 @@ class ReminderUtils {
             val timeTokens = time!!.split(":")
             val hourOfDay = timeTokens[0].toInt()
             val minute = timeTokens[1].toInt()
-            val calendar = GregorianCalendar.getInstance()
+            val calendar = Calendar.getInstance()
             val intervalWeek = AlarmManager.INTERVAL_DAY * 7
             val bootReceiver = ComponentName(appCtx, ReminderBootReceiver::class.java)
             val broadcastIntent = Intent(appCtx, ReminderAlarmReceiver::class.java)
@@ -78,18 +85,24 @@ class ReminderUtils {
 
             calendar.set(Calendar.DAY_OF_WEEK, convertDayOfWeekFromString(dayOfWeek!!))
             calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
-            calendar.set(Calendar.HOUR_OF_DAY, minute)
+            calendar.set(Calendar.MINUTE, minute)
 
             Log.d(TAG, "setAlarm System.currentTimeMillis ${System.currentTimeMillis()}")
             Log.d(TAG, "setAlarm calendar time ${calendar.timeInMillis}")
+
+            // shift to next week if already past the set date
+            if (System.currentTimeMillis() > calendar.timeInMillis) {
+                Log.d(TAG, "setAlarm alarm time already passed this week, adding 7 days")
+                calendar.add(Calendar.DAY_OF_MONTH, 7)
+                Log.d(TAG, "setAlarm adjusted alarm is ${calendar.timeInMillis}")
+            }
 
             if (enabled) {
                 // turn on boot receiver to enable alarms across power cycles
                 appCtx.packageManager.setComponentEnabledSetting(bootReceiver,
                     PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP)
 
-                alarmManager.setRepeating(AlarmManager.RTC, calendar.timeInMillis,
-                    intervalWeek, pIntent)
+                alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pIntent)
 
                 Log.d(TAG, "setAlarm() enabled boot receiver for reminder alarms")
                 Log.d(TAG, "setAlarm() set alarm with interval $intervalWeek")

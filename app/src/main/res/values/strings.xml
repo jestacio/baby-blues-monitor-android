@@ -50,12 +50,14 @@
         and from groups such as Postpartum Support International
         (https://www.postpartum.net/).\n\n
 
-        You can also call or text the OWH helpline by tapping the buttons below.\n\n
+        The OWH operates a helpline to get support over the phone at this number 1-800-944-4773 \n\n
+
+        Help via text is also available in English (1-503-894-9453) and Spanish (1-971-420-0294)\n\n
 
         The OWH Helpline hours are 9 a.m. — 6 p.m. ET, Monday — Friday\n\n
 
-        The PSI HelpLine does not handle emergencies. People in crisis should call their local
-        emergency number or the National Suicide Prevention Hot line at 1-800-273-TALK (8255).
+        The OWH HelpLine does not handle emergencies. People in crisis should call their local
+        emergency number or the National Suicide Prevention Hot line at 1-800-273-8255 (TALK).\n\n\n
     </string>
 
     <!-- EPDS Reminders -->
@@ -88,6 +90,8 @@
         (2) K. L. Wisner, B. L. Parry, C. M. Piontek, Postpartum Depression N Engl J Med vol. 347, No 3, July 18, 2002,
         194-199\n\n
     </string>
+    <string name="setting_resources_title">Mental Health Resources</string>
+    <string name="setting_resources_summary">View resources to help manage your mental health</string>
 
     <!-- General -->
     <string name="finish">Finish</string>
